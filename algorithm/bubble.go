@@ -1,35 +1,38 @@
-
 package algorithm
 
-type Bubble struct {}
+type Bubble struct{}
 
 // Max returns the larger of x or y.
 func max(x, y int) int {
-    if x < y {
-        return y
-    }
-    return x
+	if x < y {
+		return y
+	}
+	return x
 }
 
-func (Bubble) Sort(data []int) () {
+func (Bubble) Sort(data []int) {
+
 	sorting := true
 
+	// loop though data until we iterate without having to swap any items
 	for sorting == true {
 
-		sorting = false;
-		size := max(len(data)-1, 0)
+		// consider sorting complete until we encounter values we need to swap
+		sorting = false
 
-		for i := 0;  i<size; i++ {
+		// loop through the each item in the array but skip the _last_ element
+		for i := 1; i < len(data); i++ {
 
-			if (data[i+1] > data[i]){
-				continue;
+			// if index-1 is < index, move on to the next index as they are in order.
+			if data[i-1] < data[i] {
+				continue
 			}
 
+			// swap the values of index and index - 1 and set the "sorting" flag
 			temp := data[i]
-			data[i] = data[i+1]
-			data[i+1] = temp
+			data[i] = data[i-1]
+			data[i-1] = temp
 			sorting = true
-			
-		}	
+		}
 	}
 }
