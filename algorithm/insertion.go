@@ -20,7 +20,7 @@ func (Insertion) Sort(data []int) {
 			j--
 		}
 
-		// insert the swapper value at the insertion point
+		// insert the swap value at the insertion point
 		data[j+1] = current
 	}
 }
