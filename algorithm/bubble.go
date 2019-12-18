@@ -2,14 +2,6 @@ package algorithm
 
 type Bubble struct{}
 
-// Max returns the larger of x or y.
-func max(x, y int) int {
-	if x < y {
-		return y
-	}
-	return x
-}
-
 func (Bubble) Sort(data []int) {
 
 	sorting := true
