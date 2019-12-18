@@ -14,6 +14,7 @@ func (Insertion) Sort(data []int) {
 		current := data[i]
 
 		// loop backwards from the current index to the start of the set, looking for the insertion point of the swap
+		// We move each value one to the right so we have space to insert when we need to.
 		for j >= 0 && data[j] > current {
 			data[j+1] = data[j]
 			j--
