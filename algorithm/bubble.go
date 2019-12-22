@@ -21,9 +21,7 @@ func (Bubble) Sort(data []int) {
 			}
 
 			// swap the values of index and index - 1, then set the "sorting" flag
-			temp := data[i]
-			data[i] = data[i-1]
-			data[i-1] = temp
+			data[i], data[i-1] = data[i-1], data[i]
 			sorting = true
 		}
 	}
