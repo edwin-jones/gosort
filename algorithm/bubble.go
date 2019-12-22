@@ -15,8 +15,8 @@ func (Bubble) Sort(data []int) {
 		// loop through the each item in the set starting from the second element
 		for i := 1; i < len(data); i++ {
 
-			// if index-1 is < index, move on as they are in order already
-			if data[i-1] < data[i] {
+			// if index-1 is <= index, move on as they are in order already
+			if data[i-1] <= data[i] {
 				continue
 			}
 

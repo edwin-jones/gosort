@@ -21,12 +21,12 @@ var insertion = algorithm.Insertion{}
 func TestBubbleSort(t *testing.T) {
 	for _, input := range testData {
 
-		output := []int{}
+		output := make([]int, len(input))
 		copy(output, input)
 
 		bubble.Sort(output)
 
-		if !sort.IntsAreSorted(output) {
+		if !sort.IntsAreSorted(output) || len(output) != len(input) {
 			t.Errorf("Sorting failed, input: %v, output: %v.", input, output)
 		}
 	}
@@ -36,7 +36,7 @@ func BenchmarkBubbleSort(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		for _, input := range testData {
 
-			output := []int{}
+			output := make([]int, len(input))
 			copy(output, input)
 
 			bubble.Sort(output)
@@ -47,12 +47,12 @@ func BenchmarkBubbleSort(b *testing.B) {
 func TestInsertionSort(t *testing.T) {
 	for _, input := range testData {
 
-		output := []int{}
+		output := make([]int, len(input))
 		copy(output, input)
 
 		insertion.Sort(output)
 
-		if !sort.IntsAreSorted(output) {
+		if !sort.IntsAreSorted(output) || len(output) != len(input) {
 			t.Errorf("Sorting failed, input: %v, output: %v.", input, output)
 		}
 	}
@@ -62,7 +62,7 @@ func BenchmarkInsertionSort(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		for _, input := range testData {
 
-			output := []int{}
+			output := make([]int, len(input))
 			copy(output, input)
 
 			insertion.Sort(output)
