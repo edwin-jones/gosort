@@ -3,10 +3,11 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/edwin-jones/gosort/algorithm"
 	"log"
 	"strconv"
 	"strings"
+
+	"github.com/edwin-jones/gosort/algorithm"
 )
 
 type Sorter interface {
@@ -30,6 +31,8 @@ func main() {
 		sorter = algorithm.Bubble{}
 	case "insertion":
 		sorter = algorithm.Insertion{}
+	case "quick":
+		sorter = algorithm.Quick{}
 	default:
 		log.Fatal("Invalid sorting algorithm selected")
 		return
