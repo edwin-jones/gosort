@@ -6,43 +6,34 @@ func (Quick) Sort(data []int) {
 	sort(data, 0, len(data)-1)
 }
 
-func partition(data []int, start int, end int) int {
-
-	pivot := end
-	pivotValue := data[pivot]
-
-	var i int = start
-	var j int = end
-
-	for {
-		for data[i] < pivotValue {
-			i++
-		}
-		for data[j] > pivotValue {
-			j--
-		}
-
-		if data[i] <= data[j] {
-			swap(&data[i], &data[j])
-		}
-
-		i++
-		j--
-
-		if i != j {
-			continue
-		}
-
-		pivot = i
-		return pivot
-	}
-}
-
 func sort(data []int, start int, end int) {
-	if end < start {
-		pivot := partition(data, start, end)
-		sort(data, pivot+1, end)
-		sort(data, start, pivot-1)
+
+	if len(data) < 1 || start >= end {
+		return
+	}
+
+	left := start
+	right := end
+	pivot := data[end]
+
+	for left <= right {
+
+		for data[left] < pivot {
+			left++
+		}
+
+		for data[right] > pivot {
+			right--
+		}
+
+		if left <= right {
+			data[left], data[right] = data[right], data[left]
+			left++
+			right--
+		}
+
+		sort(data, start, right)
+		sort(data, left, end)
 	}
 }
 
