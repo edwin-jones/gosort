@@ -9,7 +9,7 @@ import (
 )
 
 func generateLargeSetOfRandomNumbers() []int {
-	len := 100
+	len := 1000
 	data := make([]int, len)
 	for i := 0; i <= len-1; i++ {
 		data[i] = rand.Intn(len)

@@ -31,8 +31,8 @@ func sort(data []int, start int, end int) {
 			left++
 			right--
 		}
-
-		sort(data, start, right)
-		sort(data, left, end)
 	}
+
+	sort(data, start, right)
+	sort(data, left, end)
 }
