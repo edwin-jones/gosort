@@ -36,7 +36,3 @@ func sort(data []int, start int, end int) {
 		sort(data, left, end)
 	}
 }
-
-func swap(a, b *int) {
-	*a, *b = *b, *a
-}

@@ -1,11 +1,21 @@
 package algorithm_test
 
 import (
+	"math/rand"
 	"sort"
 	"testing"
 
 	"github.com/edwin-jones/gosort/algorithm"
 )
+
+func generateLargeSetOfRandomNumbers() []int {
+	len := 100
+	data := make([]int, len)
+	for i := 0; i <= len-1; i++ {
+		data[i] = rand.Intn(len)
+	}
+	return data
+}
 
 var testData = [][]int{
 	{0, 1, 2, 3},
@@ -43,36 +53,18 @@ func TestSortingAlgorithms(t *testing.T) {
 
 func BenchmarkBubbleSort(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		for _, input := range testData {
-
-			output := make([]int, len(input))
-			copy(output, input)
-
-			bubble.Sort(output)
-		}
+		bubble.Sort(generateLargeSetOfRandomNumbers())
 	}
 }
 
 func BenchmarkInsertionSort(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		for _, input := range testData {
-
-			output := make([]int, len(input))
-			copy(output, input)
-
-			insertion.Sort(output)
-		}
+		insertion.Sort(generateLargeSetOfRandomNumbers())
 	}
 }
 
 func BenchmarkQuickSort(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		for _, input := range testData {
-
-			output := make([]int, len(input))
-			copy(output, input)
-
-			quick.Sort(output)
-		}
+		quick.Sort(generateLargeSetOfRandomNumbers())
 	}
 }
