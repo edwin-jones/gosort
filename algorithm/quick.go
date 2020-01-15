@@ -3,24 +3,49 @@ package algorithm
 type Quick struct{}
 
 func (Quick) Sort(data []int) {
+	sort(data, 0, len(data)-1)
+}
 
-	// loop through every item in the set
-	for i := 1; i < len(data); i++ {
+func partition(data []int, start int, end int) int {
 
-		// set the default insertion point as the last known sorted value (index 0)
-		j := i - 1
+	pivot := end
+	pivotValue := data[pivot]
 
-		// keep track of the value at the current index while we swap things around
-		current := data[i]
+	var i int = start
+	var j int = end
 
-		// loop backwards from the current index to the start of the set, looking for the insertion point of the swap
-		// We move each value one to the right so we have space to insert when we need to.
-		for j >= 0 && data[j] > current {
-			data[j+1] = data[j]
+	for {
+		for data[i] < pivotValue {
+			i++
+		}
+		for data[j] > pivotValue {
 			j--
 		}
 
-		// insert the swap value at the insertion point
-		data[j+1] = current
+		if data[i] <= data[j] {
+			swap(&data[i], &data[j])
+		}
+
+		i++
+		j--
+
+		if i != j {
+			continue
+		}
+
+		pivot = i
+		return pivot
 	}
+}
+
+func sort(data []int, start int, end int) {
+	if end < start {
+		pivot := partition(data, start, end)
+		sort(data, pivot+1, end)
+		sort(data, start, pivot-1)
+	}
+}
+
+func swap(a, b *int) {
+	*a, *b = *b, *a
 }

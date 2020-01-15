@@ -25,7 +25,7 @@ type Sorter interface {
 
 var algorithms = []Sorter{bubble, insertion, quick}
 
-func TestSorter(t *testing.T) {
+func TestSortingAlgorithms(t *testing.T) {
 	for _, sorter := range algorithms {
 		for _, input := range testData {
 
